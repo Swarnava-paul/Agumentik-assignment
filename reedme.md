@@ -7,6 +7,7 @@
 # for admin (email:admin@gmail.com,password:test123);
 # i do not implement hashing in password for time constrains but i know auth in depth
 
+# i use strict page rendering based on user Role (Secure Dashboards)
 
 # project startup Details
 

@@ -28,9 +28,9 @@ export const useGetUserDetailsByToken = () => {
            const {role,name} = data;
            setUserDetails({name,role})
            if(role === 'User') {
-            navigate('/home')
+            navigate('/')
            }else {
-            navigate('/home/admin')
+            navigate('/admin')
            }
         }catch(error) {
           navigate('/login');

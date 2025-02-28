@@ -11,7 +11,7 @@ const AllRoutes:React.FC = () => {
     return (
         <Suspense fallback={<>Loading...</>}>
             <Routes>
-                <Route path='home'>
+                <Route path='/'>
                    <Route index element={<UserPage/>}/>
                    <Route path='admin' element={<AdminPage/>}/>
                    <Route path='login' element={<LoginPage/>}/>
