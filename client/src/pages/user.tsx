@@ -2,21 +2,14 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useGetUserDetailsByToken } from '../customhooks/userDetails'
 import {io} from 'socket.io-client'
-
+import { Grid,Image,Text } from '@chakra-ui/react'
 const socket = io('http://localhost:3000',{autoConnect:false});
 
 const UserPage:React.FC = () => {
    
-  type NewsProps = {
-    title:string,
-    thumbnailUrl:string,
-    description:string,
-    likes? : number,
-    comments? : number
-  }
-  const {userDetails,retriveUserDetails,isLoading} = useGetUserDetailsByToken();
-  const [news,setNews]= useState<NewsProps>()
 
+  const {userDetails,retriveUserDetails,isLoading} = useGetUserDetailsByToken();
+  const [news,setNews]= useState([])
 
   useEffect(()=>{
 
@@ -30,7 +23,7 @@ const UserPage:React.FC = () => {
 
    
    socket.on('news',(data)=>{
-    console.log('new news' ,data);
+      setNews((prev)=>[data,...prev])
    })
 
     return () => {
@@ -42,7 +35,20 @@ const UserPage:React.FC = () => {
   return (
     <div>
        {
-       ( isLoading == true ? (<h1>Loading</h1>): ('user Page'))
+       ( isLoading == true ? (<h1>Loading</h1>): (
+        <Grid templateColumns='repeat(1,40%)' placeContent='center' rowGap={40}>
+          <Text mt='5%' textAlign='center'>Live News Feed</Text>
+         {
+          news.map((news,index)=>(
+            <Grid key={index} border='1px solid grey' placeItems='center'>
+              <Image src={news.thumbnailUrl} alt={news.title} />
+              <Text>{'Title:   '}{news.title}</Text>
+              <Text>{"Description:  "}{news.description}</Text> 
+            </Grid>
+          ))
+         }
+        </Grid>
+       ))
       }
     </div>
   )
