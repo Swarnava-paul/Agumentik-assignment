@@ -1,5 +1,4 @@
 
-<<<<<<< HEAD
 # Project Agumentik test assignment 90% work done
 
 # For time constrains i do not use user demended authentication
@@ -14,5 +13,3 @@
 
 # cd client -> npm install -> npm run dev
 # cd server -> npm install -> npm run start
-=======
->>>>>>> c7775024d5a1e13817349c9764066fb7b8a6688c
