@@ -11,7 +11,11 @@ const { Server } = require("socket.io");
 
     const server = express();
     const httpServer = createServer(server);
-    const io = new Server(httpServer);
+    const io = new Server(httpServer,{
+        cors:{
+            origin : "http://localhost:5173",
+        }
+    });
 
     server.use(cors());
     server.use(express.json());
@@ -27,7 +31,7 @@ const { Server } = require("socket.io");
 
        socket.on('post-news', (data) => {
           console.log(data);
-          adminNamespace.to('online').emit('news', data);
+          io.to('online').emit('news', data);
        });
 
        socket.on('disconnect',()=>{
