@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { useGetUserDetailsByToken } from '../customhooks/userDetails'
 import {io} from 'socket.io-client'
 import { Grid,Image,Text } from '@chakra-ui/react'
-const socket = io('http://localhost:3000',{autoConnect:false});
+const socket = io(import.meta.env.VITE_BACKEND_BASE_URL,{autoConnect:false});
 
 const UserPage:React.FC = () => {
    

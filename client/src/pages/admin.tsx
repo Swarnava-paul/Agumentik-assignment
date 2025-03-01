@@ -64,6 +64,7 @@ const CreatePost:React.FC<CreatePostProps> = ({setPostView,socket}) => {
   const [postDetails,setPostDetails] = useState<PostDetails>();
 
   function handleChange(e:React.ChangeEvent<HTMLFormElement>){
+    
        setPostDetails({
         ...postDetails,
         [e.target.name]:e.target.value
